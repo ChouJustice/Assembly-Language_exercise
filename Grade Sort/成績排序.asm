@@ -1,18 +1,18 @@
 TITLE MASM Template(main.asm)
 INCLUDE Irvine32.inc
 .data
-arrayA DWORD 6 DUP(0) ;ªì©l'0'
+arrayA DWORD 6 DUP(0) ;åˆå§‹'0'
 arrayB DWORD 6 DUP(0)
 arrayC DWORD 6 DUP(0)
 arrayD DWORD 6 DUP(0)
 arrayE DWORD 6 DUP(0)
 arrayF DWORD 6 DUP(0)
-keyInputName BYTE "½Ğ¿é¤J¾Ç¸¹«á¤K½X:",0
-keyInputChinese BYTE "½Ğ¿é¤J°ê¤å¦¨ÁZ(0~100):",0
-keyInputEnglish BYTE "½Ğ¿é¤J­^¤å¦¨ÁZ(0~100):",0
-keyInputMath    BYTE "½Ğ¿é¤J¼Æ¾Ç¦¨ÁZ(0~100):",0
+keyInputName BYTE "è«‹è¼¸å…¥å­¸è™Ÿå¾Œå…«ç¢¼:",0
+keyInputChinese BYTE "è«‹è¼¸å…¥åœ‹æ–‡æˆç¸¾(0~100):",0
+keyInputEnglish BYTE "è«‹è¼¸å…¥è‹±æ–‡æˆç¸¾(0~100):",0
+keyInputMath    BYTE "è«‹è¼¸å…¥æ•¸å­¸æˆç¸¾(0~100):",0
 output  BYTE " ",0
-output1 BYTE "¾Ç¸¹    °ê¤å ­^¤å ¼Æ¾Ç Á`¤À ¦W¦¸:",0 
+output1 BYTE "å­¸è™Ÿ    åœ‹æ–‡ è‹±æ–‡ æ•¸å­¸ ç¸½åˆ† åæ¬¡:",0 
 
 .code
 main PROC
@@ -73,7 +73,7 @@ ja k1
 mov ecx,0
 mov ebx,0
 
-mov ecx,5   ;±Æ¦C
+mov ecx,5   ;æ’åˆ—
 L2:
   push ecx
   mov esi,0
@@ -116,7 +116,7 @@ mov ecx, 5
 mov esi, 0
 mov edx, 2
 mov [arrayF], 1
-L5:                 ;±Æ¦W
+L5:                 ;æ’å
   push ecx
   mov eax, [arrayE+esi]
   mov ebx, [arrayE+esi+4]
@@ -135,7 +135,7 @@ L6:
   loop L5     
 
 
-mov edx,OFFSET output1   ;¦L¥X
+mov edx,OFFSET output1   ;å°å‡º
 call WriteString
 call Crlf
 mov ecx,6 
