@@ -9,40 +9,40 @@ answer DWORD 0;
 Aword DWORD 0;
 Bword DWORD 0;
 Cword DWORD 0;
-number1 BYTE "½Ğ¿é¤JAªº¼Æ¦r :",0;
-number2 BYTE "½Ğ¿é¤JBªº¼Æ¦r :",0;
-number3 BYTE "½Ğ¿é¤JCªº¼Æ¦r :",0;
+number1 BYTE "è«‹è¼¸å…¥Açš„æ•¸å­— :",0;
+number2 BYTE "è«‹è¼¸å…¥Bçš„æ•¸å­— :",0;
+number3 BYTE "è«‹è¼¸å…¥Cçš„æ•¸å­— :",0;
 point BYTE ".",0;
-Q BYTE "¤@¤¸¤G¦¸¤èµ{¦¡ AX^2+BX+C=0 ",0;
-An1 BYTE "¦³µL­­¦h²Õ¸Ñ",0;
-An2 BYTE "µL¸Ñ",0;
-An3 BYTE "¦³¤@¸Ñ",0;
-An4 BYTE "¦³¨â¸Ñ",0;
+Q BYTE "ä¸€å…ƒäºŒæ¬¡æ–¹ç¨‹å¼ AX^2+BX+C=0 ",0;
+An1 BYTE "æœ‰ç„¡é™å¤šçµ„è§£",0;
+An2 BYTE "ç„¡è§£",0;
+An3 BYTE "æœ‰ä¸€è§£",0;
+An4 BYTE "æœ‰å…©è§£",0;
 
 .code
 main PROC
 
 mov eax,0;
 
-mov edx,OFFSET Q  ;¦L¥XÃD¥Ø
+mov edx,OFFSET Q  ;å°å‡ºé¡Œç›®
 call WriteString
 Call Crlf;
 RA:
-mov edx,OFFSET number1  ;¦L¥X¥X¤JA
+mov edx,OFFSET number1  ;å°å‡ºå‡ºå…¥A
 call WriteString
-call ReadInt;  ;©I¥s¥X¤J
+call ReadInt;  ;å‘¼å«å‡ºå…¥
 mov Aword,eax;
 Call Crlf;
 RB:
-mov edx,OFFSET number2  ;¦L¥X¥X¤JB
+mov edx,OFFSET number2  ;å°å‡ºå‡ºå…¥B
 call WriteString
-call ReadInt;  ;©I¥s¥X¤J
+call ReadInt;  ;å‘¼å«å‡ºå…¥
 mov Bword,eax;
 Call Crlf;
 RC:
-mov edx,OFFSET number3  ;¦L¥X¥X¤JC
+mov edx,OFFSET number3  ;å°å‡ºå‡ºå…¥C
 call WriteString
-call ReadInt;  ;©I¥s¥X¤J
+call ReadInt;  ;å‘¼å«å‡ºå…¥
 mov Cword,eax;
 Call Crlf;
 
@@ -62,14 +62,14 @@ jne I4
 I3:
 mov eax,Cword;
 cmp eax,0
-je A1         ;eax == 0 ¸õ¨ìA1
-jne A2        ;eax != 0 ¸õ¨ìA2
+je A1         ;eax == 0 è·³åˆ°A1
+jne A2        ;eax != 0 è·³åˆ°A2
 
 I4:
 mov eax,Cword;
 cmp eax,0
-je A3         ;eax == 0 ¸õ¨ìA3
-jne A3        ;eax != 0 ¸õ¨ìA3
+je A3         ;eax == 0 è·³åˆ°A3
+jne A3        ;eax != 0 è·³åˆ°A3
 
 I5:
 mov eax,Aword;
@@ -81,32 +81,32 @@ imul eax,4; ; ;eax=A*4
 imul eax,ecx; ;eax = eax*C
 sub sum,eax;  ;sum = B*B - 4*A*C
 mov eax,sum;  ;eax = sum
-cmp eax,0;    ;»P0¤ñ¸û
-jg A4         ;eax>0®É ¸õ¨ìA4
-je A5         ;eax=0®É ¸õ¨ìA5
-jl A6         ;eax<0®É ¸õ¨ìA6
+cmp eax,0;    ;èˆ‡0æ¯”è¼ƒ
+jg A4         ;eax>0æ™‚ è·³åˆ°A4
+je A5         ;eax=0æ™‚ è·³åˆ°A5
+jl A6         ;eax<0æ™‚ è·³åˆ°A6
 
-A1: ;µL­­¦h²Õ¸Ñ
+A1: ;ç„¡é™å¤šçµ„è§£
 mov edx,OFFSET An1
 call WriteString
 Call Crlf;
 exit
 
-A2: ;µL¸Ñ
+A2: ;ç„¡è§£
 mov edx,OFFSET An2
 call WriteString
 Call Crlf;
 exit
 
-A3: ;¦³¤@²Õ¸Ñ
+A3: ;æœ‰ä¸€çµ„è§£
 mov edx,OFFSET An3
 call WriteString
 mov eax,Cword;      ;eax = C
 neg eax;            ;eax = -C
 mov ebx,Bword;      ;ebx = B
-cdq                 ;¦Û°Ê§â¾l¼Æ©ñ¨ìedx
+cdq                 ;è‡ªå‹•æŠŠé¤˜æ•¸æ”¾åˆ°edx
 idiv ebx;           ;eax / ebx = -C/B
-call Writeint;      ;¦L¥X¦³¸¹¼Æ
+call Writeint;      ;å°å‡ºæœ‰è™Ÿæ•¸
 mov eax,edx;
 neg eax;
 mov point1,eax;
@@ -121,32 +121,32 @@ Call Crlf;
 exit
 
 
-A4: ;¦³¨â²Õ¸Ñ
+A4: ;æœ‰å…©çµ„è§£
 mov edx,OFFSET An4  
 call WriteString
 mov ebx,0;          ;ebx = 0
 A41:
 mov answer,ebx;     ;answer = ebx
-imul ebx,ebx;       ;B¥­¤è
+imul ebx,ebx;       ;Bå¹³æ–¹
 mov ecx,answer;     ;ecx = answer
 add ecx,1;          ;ecx = ecx + 1
 imul ecx,ecx;       ;ecx = ecx * ecx
-cmp sum,ebx;        ;¤ñ¸ûsum ebx
+cmp sum,ebx;        ;æ¯”è¼ƒsum ebx
 mov ebx,answer;     ;ebx = answer
 inc ebx;            ;ebx = ebx + 1
-jge A42             ;B*B-4*A*C >= 0 ¸õ¨ìA42
-jl A41              ;          <  0 ¸õ¨ìA41
+jge A42             ;B*B-4*A*C >= 0 è·³åˆ°A42
+jl A41              ;          <  0 è·³åˆ°A41
 A42:  ;B*B-4*A*C >= 0
-cmp sum,ecx;        ;¤ñ¸ûsum ecx
-jl A43              ;sum < ecx ¸õ¨ìA43
-jg A41              ;sum > ecx ¸õ¨ìA41
+cmp sum,ecx;        ;æ¯”è¼ƒsum ecx
+jl A43              ;sum < ecx è·³åˆ°A43
+jg A41              ;sum > ecx è·³åˆ°A41
 A43:
 mov eax,Bword;      ;eax = B
 neg eax;            ;eax = -eax
 add eax,answer;     ;eax = eax + answer
 mov ebx,Aword;      ;ebx = A
 imul ebx,2;         ;ebx = ebx * 2;
-cdq                 ;¦Û°Ê§â¾l¼Æ©ñ¨ìedx
+cdq                 ;è‡ªå‹•æŠŠé¤˜æ•¸æ”¾åˆ°edx
 idiv ebx;           ;2*A/-B
 call Writeint;
 mov eax,edx;        ;eax = edx
@@ -157,12 +157,12 @@ A431:
 neg eax;
 jmp A432
 A432:
-mov point1,eax;     ;­pºâ¤p¼ÆÂI
+mov point1,eax;     ;è¨ˆç®—å°æ•¸é»
 mov eax,10;
 mul point1;
 cdq
 div ebx;
-mov edx,OFFSET point ;¦L¥X"."
+mov edx,OFFSET point ;å°å‡º"."
 call WriteString
 call Writedec;
 A44:
